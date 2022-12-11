@@ -16,10 +16,10 @@ setTimeout(() => changeProgress(100), 16000);
 const changeProgress = (bar) => {
   progressbar.style.width = `${bar}%`;
   if (bar < 100) {
-    window.addEventListener('scroll', noScroll);
-
+    document.getElementById("deuxieme").style.display = "none";
+    
   } else {
-    window.removeEventListener('scroll', noScroll);
+    document.getElementById("deuxieme").style.display = "flex";
   }
   if (bar >= 100) {
     document.getElementById("loading").classList.remove("loading");
@@ -37,14 +37,6 @@ const changeProgress = (bar) => {
     }
   }
 };
-
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
-function noScroll() {
-  window.scrollTo(0, 0);
-}
-
 
 
 var form1 = document.getElementById("form1");
@@ -142,7 +134,7 @@ let currentSlide = 0;
 function show() {
   document.getElementById("deuximemebis").style.display = 'block'
   document.getElementById("coteg").style.display = "none"
-  document.getElementById("coted").style.display = "none"
+  document.getElementById("cotd").style.display = "none"
 }
 document.getElementById("slide-next").addEventListener("click", () => {
   changeSlide(currentSlide + 1)
@@ -153,7 +145,7 @@ document.getElementById("slide-prev").addEventListener("click", () => {
 document.getElementById("slide-close").addEventListener("click", () => {
   document.getElementById("deuximemebis").style.display = 'none'
   document.getElementById("coteg").style.display = "block"
-  document.getElementById("coted").style.display = "block"
+  document.getElementById("cotd").style.display = "block"
 });
 
 function changeSlide(moveTo) {
@@ -182,3 +174,4 @@ function changeSlide(moveTo) {
     }
     return total_score
   }
+

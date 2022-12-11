@@ -21,10 +21,16 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 10px;
 }
-
+.coted:hover::-webkit-scrollbar{
+  width: 10px;
+  height: 10px;
+}
+.coted:hover::-webkit-scrollbar-track-piece{
+  background-color: #849ace;
+}
 ::-webkit-scrollbar-thumb {
   background: rgb(0, 0, 0);
 }
@@ -65,7 +71,7 @@ body {
   color: rgb(255, 255, 255);
   font-size: 110px;
   animation: cligno 1s infinite;
-  transition: .5s;
+  transition: .1s;
 }
 
 @keyframes cligno {
@@ -164,7 +170,7 @@ body {
 }
 
 .coteg {
-  flex: 30%;
+  flex: 20%;
   height: 100%;
   background-color: rgba(48, 46, 46, 0.883);
   position: relative;
@@ -220,8 +226,14 @@ body {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.883);
   overflow-y:scroll;
+  overflow-x: hidden;
   position: relative;
   
+}
+.cotd{
+  z-index: 555;
+  width: 100%;
+  height: 100%;
 }
 .shop{
   height: 100%;
@@ -551,14 +563,44 @@ h4 .rvl{
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-top: 9%;
+  margin-top: 20%;
+}
+
+.container5 h3{
+  font-size: 50px;
+  font-family: "Righteous", cursive;
+  text-transform: uppercase;
+  top: 50px;
+  position: absolute;
+}
+
+h3 > span{
+  color: rgb(0, 0, 0);
+  animation: loadaf 6.5s ease-in-out   infinite;
+}
+span:nth-child(1){
+animation-delay: 1s;
+}
+span:nth-child(2){
+animation-delay: 2.5s;
+}
+span:nth-child(3){
+  animation-delay: 5s;
+}
+@keyframes loadaf {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }
 
 .loading5{
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  height: 450px;
-  transition: all 1s ease-in-out;
-  width: 450px;
+  height: 350px;
+  transition: all 1s ;
+  width: 350px;
   z-index: 5;
   animation: loading5 infinite 6s ease-in-out;
   background: linear-gradient(45deg, rgba(13, 13, 219, 0.989)  0%, rgb(0, 145, 255) 50%, rgb(0, 234, 255)100%);
