@@ -220,21 +220,21 @@ body {
   z-index: 99;
   cursor: pointer;
 }
-
+.coted:hover{
+  filter: none;
+}
 .coted {
   flex: 70%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.883);
+  filter: blur(1.9px) brightness(15%)  drop-shadow(40px 40px 50px rgb(0, 0, 0));
+  background: rgba(0, 0, 0, 0.883);
+  transition: 1s;
   overflow-y:scroll;
   overflow-x: hidden;
   position: relative;
   
 }
-.cotd{
-  z-index: 555;
-  width: 100%;
-  height: 100%;
-}
+
 .shop{
   height: 100%;
   width: 100%;
@@ -690,7 +690,7 @@ width: 100%;
 }
 #slide-close {
   top: 7%;
-  right: .9%;
+  left: .9%;
   transform: translateY(-50%);
 }
 
