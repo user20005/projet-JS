@@ -6,7 +6,7 @@ setTimeout(() => changeProgress(7), 700);
 setTimeout(() => changeProgress(10), 1000);
 setTimeout(() => changeProgress(20), 3500);
 setTimeout(() => changeProgress(40), 4500);
-setTimeout(() => changeProgress(50), 5000);
+setTimeout(() => changeProgress(50), 6000);
 setTimeout(() => changeProgress(70), 8266);
 setTimeout(() => changeProgress(90), 10000);
 setTimeout(() => changeProgress(95), 12000);
@@ -15,45 +15,38 @@ setTimeout(() => changeProgress(100), 16000);
 
 const changeProgress = (bar) => {
   progressbar.style.width = `${bar}%`;
+  let loading = document.querySelector(".loading");
+  // console.log(bar);
   if (bar < 100) {
     document.getElementById("deuxieme").style.display = "none";
-    
   } else {
     document.getElementById("deuxieme").style.display = "flex";
   }
   if (bar >= 100) {
-    document.getElementById("loading").classList.remove("loading");
     document.querySelector(".containerprogress").classList.remove("containerprogress");
-    document.querySelector(".progressbar").classList.remove("progressbar");
     document.querySelector(".bar").classList.remove("bar");
-    const nv = document.getElementById("loading");
-    if (!nv.classList.contains('bar')) {
-      document.getElementById("loading").classList.add("loading2");
-      document.querySelector(".logobas").classList.add("logobas2");
-      document.getElementById("loading").classList.remove("loading");
-      document.querySelector(".loading2").innerHTML = "LOADING COMPLETED"
+    document.querySelector(".logobas").classList.replace("logobas", "logobas2");
+    loading.innerHTML = "LOADING COMPLETED";
+    loading.style.fontSize = "60px";
 
-
-    }
   }
-};
+}
 
+let form1 = document.getElementById("form1");
+let form2 = document.getElementById("form2");
+let form3 = document.getElementById("form3");
+let form4 = document.getElementById("form4");
+let form5 = document.getElementById("form5");
 
-var form1 = document.getElementById("form1");
-var form2 = document.getElementById("form2");
-var form3 = document.getElementById("form3");
-var form4 = document.getElementById("form4");
-var form5 = document.getElementById("form5");
+let next1 = document.getElementById("next1");
+let next2 = document.getElementById("next2");
+let next3 = document.getElementById("next3");
+let next4 = document.getElementById("next4");
 
-var next1 = document.getElementById("next1");
-var next2 = document.getElementById("next2");
-var next3 = document.getElementById("next3");
-var next4 = document.getElementById("next4");
-
-var back1 = document.getElementById("back1");
-var back2 = document.getElementById("back2");
-var back3 = document.getElementById("back3")
-var back4 = document.getElementById("back4")
+let back1 = document.getElementById("back1");
+let back2 = document.getElementById("back2");
+let back3 = document.getElementById("back3")
+let back4 = document.getElementById("back4")
 
 next1.onclick = function () {
   form2.style.left = "0px";
@@ -94,12 +87,11 @@ back4.onclick = function () {
   form5.style.left = "750px";
 
 }
+
 function nick() {
   var nickn = document.getElementById('ninp').value;
-
   document.getElementById('nick').innerHTML = nickn;
 }
-
 function Value1() {
   return document.querySelector('input[name="cpu"]:checked').value;
 }
@@ -134,7 +126,7 @@ let currentSlide = 0;
 function show() {
   document.getElementById("deuximemebis").style.display = 'block'
   document.getElementById("coteg").style.display = "none"
-  document.getElementById("cotd").style.display = "none"
+  document.getElementById("coted").style.display = "none"
 }
 document.getElementById("slide-next").addEventListener("click", () => {
   changeSlide(currentSlide + 1)
@@ -145,7 +137,7 @@ document.getElementById("slide-prev").addEventListener("click", () => {
 document.getElementById("slide-close").addEventListener("click", () => {
   document.getElementById("deuximemebis").style.display = 'none'
   document.getElementById("coteg").style.display = "block"
-  document.getElementById("cotd").style.display = "block"
+  document.getElementById("coted").style.display = "block"
 });
 
 function changeSlide(moveTo) {
@@ -158,20 +150,32 @@ function changeSlide(moveTo) {
 }
 
 
- $("input[type='radio']").click(function () {
-    var score = getChecklistItems();
-    document.getElementById('optiond').textContent = score;
-  });
-  
-  function getChecklistItems() {
-    var total_score = 0
-    var result = $("input:radio:checked").get();
-    var checked_value = $.map(result, function (element) {
-      return $(element).attr("value");
-    });
-    for (i = 0; i < checked_value.length; i++) {
-      total_score += parseInt(checked_value[i])
+next3.addEventListener('click', function () {
+  var total = 0;
+  var cpu = document.getElementsByName('cpu');
+  var height = document.getElementsByName('height');
+  var battery = document.getElementsByName('battery');
+  var color = document.getElementsByName('color');
+  for (var i = 0; i < cpu.length; i++) {
+    if (cpu[i].checked) {
+      total += parseInt(cpu[i].value);
     }
-    return total_score
   }
-
+  for (var i = 0; i < height.length; i++) {
+    if (height[i].checked) {
+      total += parseInt(height[i].value);
+    }
+  }
+  for (var i = 0; i < battery.length; i++) {
+    if (battery[i].checked) {
+      total += parseInt(battery[i].value);
+    }
+  }
+  for (var i = 0; i < color.length; i++) {
+    if (color[i].checked) {
+      total += parseInt(color[i].value);
+    }
+  }
+  console.log(total);
+  document.getElementById('optiond').innerHTML = total;
+});
